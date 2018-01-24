@@ -13,5 +13,20 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         //factory();
+
+        DB::table('users')->insert([
+            'name' => 'María Zapata Casales',
+            'email' => 'maria@zapata.com',
+            'password' => bcrypt(123456),
+            'remember_token' => str_random(10)
+        ]);
+
+        factory(App\User::class, 9)->create()->each(
+            function($user) {
+                factory(App\Thread::class)->create(['user_id' => $user->id]);
+            }
+        );
+
+        factory(App\Post::class,50)->create();
     }
 }
