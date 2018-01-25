@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
             'remember_token' => str_random(10)
         ]);
 
-        factory(App\User::class, 9)->create()->each(
+        factory(App\User::class, 40)->create()->each(
             function($user) {
                 factory(App\Thread::class)->create(['user_id' => $user->id]);
             }
         );
 
-        factory(App\Post::class,50)->create();
+        factory(App\Post::class,100)->create();
     }
 }
