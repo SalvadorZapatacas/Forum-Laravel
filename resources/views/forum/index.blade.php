@@ -15,7 +15,7 @@
                     <section class="row panel-body">
 
                         <section class="col-md-6">
-                            <h3> <a href="#"><i class=""> </i>{{ $thread->title }}</a></h3>
+                            <h3> <a href="{{ route('thread.show' , $thread->id) }}"><i class=""> </i>{{ $thread->title }}</a></h3>
                         </section>
                         <section class="col-md-2">
                             <ul id="post-topic">
