@@ -10,8 +10,8 @@
                 <div class="panel-heading">Crear un hilo</div>
                 <div class="panel-body">
                     {!! Form::open(['url' => route('thread.store') , 'method' => 'POST']) !!}
-                    {!! Field::text('title') !!}
-                    {!! Field::textarea('content') !!}
+                    {!! Field::text('title',['placeholder' => 'Introduce el título']) !!}
+                    {!! Field::textarea('content',['placeholder' => 'Introduce el contenido']) !!}
                     {!! Form::submit('Crear hilo', ['class' => 'btn btn-success']) !!}
                     {!! Form::close() !!}
                 </div>

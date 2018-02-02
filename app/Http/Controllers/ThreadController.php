@@ -13,6 +13,7 @@ class ThreadController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index','show']);
+        $this->middleware('owns')->only(['edit','update','destroy']);
     }
 
 
@@ -71,9 +72,10 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit($id)
     {
-        //
+        $thread = Thread::findOrFail($id);
+        return view('thread.edit',compact('thread'));
     }
 
     /**
@@ -83,9 +85,11 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update(Request $request, $id)
     {
-        //
+        Thread::findOrFail($id)->update($request->all());
+        Alert::success("Tu hilo se ha editado satisfactoriamente");
+        return redirect()->route('thread.show',$id);
     }
 
     /**

@@ -15,6 +15,14 @@
                                 <time class="">
                                     Fecha creación: <b>{{ $thread->created_at }}</b>
                                 </time>
+                                <div class="pull-right">
+                                    @if(auth()->user()->getAuthIdentifier() == $thread->user_id)
+                                        <a class="btn btn-info btn-xs" href="{{ route('thread.edit',$thread->id) }}">Editar hilo</a>
+                                        {!! Form::open(['method' => 'DELETE','route' => ['thread.destroy', $thread->id],'style'=>'display:inline']) !!}
+                                        {!! Form::submit('Borrar hilo', ['class' => 'btn btn-danger btn-xs']) !!}
+                                        {!! Form::close() !!}
+                                    @endif
+                                </div>
                             </section>
                         </div>
                         <section class="row panel-body">
@@ -39,8 +47,8 @@
                                     </figure>
                                 </section>
                             </section>
-
                         </section>
+
                         <div class="panel-footer">
                             <div class="row">
 
