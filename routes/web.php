@@ -17,7 +17,4 @@ Auth::routes();
 Route::get('/', 'ForumController@index')->name('forum.index');
 
 
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('thread', 'ThreadController');

@@ -3,13 +3,21 @@
 @section('content')
 
 <div class="container">
+
     <div class="row">
         <section class="panel panel-info">
             <header class="panel-heading">
                 <h2 class="text-center">Hilos</h2>
             </header>
+
             @if(count($threads))
                 {{ $threads->links() }}
+                <br>
+                @auth
+                    <a class="btn btn-success btn-xs" href="{{route('thread.create')}}">Crear un hilo</a>
+                @endauth
+
+
                 @foreach($threads as $thread)
                     <hr>
                     <section class="row panel-body">

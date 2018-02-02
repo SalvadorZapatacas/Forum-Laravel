@@ -1,21 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!--
-<div class="container">
-    <div class="row">
-        <section class="panel">
-            <header class="panel-heading">
-                <section class="col-md-6">
-                    <h3 class="text-center"></h3>
-                </section>
-                <section class="col-md-6">
-                    <h3></h3>
-                </section>
-            </header>
-            <hr>
 
--->
 
 <section class="container">
     <section class="row clearfix">
@@ -72,7 +58,7 @@
 
 @foreach($thread->posts as $post)
 
-    <section class="container">
+    <section class="container col-md-offset-1">
         <section class="row clearfix">
             <section class="col-md-10 column">
                 <div class="row clearfix">
@@ -81,7 +67,7 @@
                             <div class="panel-heading">
                                 <section class="panel-title">
                                     <time class="">
-                                        Fecha creación: <b>{{ $post->created_at }}</b>
+                                        Fecha de posteado: <b>{{ $post->created_at }}</b>
                                     </time>
                                 </section>
                             </div>
