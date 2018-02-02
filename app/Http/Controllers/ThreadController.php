@@ -33,7 +33,6 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        Alert::success('The end is near');
         return view('thread.create');
     }
 
@@ -50,7 +49,7 @@ class ThreadController extends Controller
         $thread->user_id = auth()->user()->getAuthIdentifier();
         $thread->save();
         Alert::success("Tu hilo se ha creado satisfactoriamente");
-        return redirect('/');
+        return redirect('/thread/' . $thread->id);
     }
 
     /**

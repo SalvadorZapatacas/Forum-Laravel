@@ -4,6 +4,7 @@
 
 
 <section class="container">
+    {!! Alert::render() !!}
     <section class="row clearfix">
         <section class="col-md-12 column">
             <div class="row clearfix">
