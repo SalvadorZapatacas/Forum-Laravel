@@ -1,7 +1,8 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: salva
- * Date: 2/02/18
- * Time: 9:42
- */
+@extends('layouts.app')
+
+@section('content')
+
+    {!! Alert::message('This is a message', 'alert-type') !!}
+    
+
+@endsection
