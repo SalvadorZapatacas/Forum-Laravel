@@ -14,7 +14,7 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $threads = Thread::paginate(5);
+        $threads = Thread::orderBy('created_at', 'desc')->paginate(5);;
         return view('forum.index', compact('threads'));
     }
 

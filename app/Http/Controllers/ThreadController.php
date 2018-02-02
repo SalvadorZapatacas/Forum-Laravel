@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreThreadForum;
 use App\Thread;
 use Illuminate\Http\Request;
+use Styde\Html\Facades\Alert;
 
 class ThreadController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +33,8 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        //
+        Alert::success('The end is near');
+        return view('thread.create');
     }
 
     /**
@@ -33,9 +43,14 @@ class ThreadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreThreadForum $request)
     {
-        //
+        $thread = new Thread();
+        $thread->fill($request->all());
+        $thread->user_id = auth()->user()->getAuthIdentifier();
+        $thread->save();
+        Alert::success("Tu hilo se ha creado satisfactoriamente");
+        return redirect('/');
     }
 
     /**

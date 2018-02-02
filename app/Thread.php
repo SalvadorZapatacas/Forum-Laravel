@@ -8,7 +8,9 @@ use Carbon\Carbon;
 class Thread extends Model
 {
 
-
+    protected $fillable = [
+        'title','content'
+    ];
 
     public function user()
     {

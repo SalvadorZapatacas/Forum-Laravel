@@ -9,6 +9,7 @@
             <header class="panel-heading">
                 <h2 class="text-center">Hilos</h2>
             </header>
+            {!! Alert::render() !!}
 
             @if(count($threads))
                 {{ $threads->links() }}
