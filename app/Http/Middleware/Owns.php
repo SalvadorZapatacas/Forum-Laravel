@@ -17,11 +17,7 @@ class Owns
      */
     public function handle($request, Closure $next)
     {
-        $thread = Thread::findOrFail($request->route('thread'));
-
-        if(is_null($thread) || empty($thread)){
-            return false;
-        }
+        $thread = Thread::findOrFail($request->thread);
 
         if ($thread->user_id != Auth::user()->id)
         {
