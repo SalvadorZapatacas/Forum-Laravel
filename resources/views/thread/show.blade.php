@@ -16,11 +16,13 @@
                                     Fecha creación: <b>{{ $thread->created_at }}</b>
                                 </time>
                                 <div class="pull-right">
-                                    @if(auth()->user()->getAuthIdentifier() == $thread->user_id)
-                                        <a class="btn btn-info btn-xs" href="{{ route('thread.edit',$thread->id) }}">Editar hilo</a>
-                                        {!! Form::open(['method' => 'DELETE','route' => ['thread.destroy', $thread->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Borrar hilo', ['class' => 'btn btn-danger btn-xs']) !!}
-                                        {!! Form::close() !!}
+                                    @if (!is_null(auth()->user()->id) )
+                                            @if(auth()->user()->id == $thread->user_id)
+                                                <a class="btn btn-info btn-xs" href="{{ route('thread.edit',$thread->id) }}">Editar hilo</a>
+                                                {!! Form::open(['method' => 'DELETE','route' => ['thread.destroy', $thread->id],'style'=>'display:inline']) !!}
+                                                {!! Form::submit('Borrar hilo', ['class' => 'btn btn-danger btn-xs']) !!}
+                                                {!! Form::close() !!}
+                                            @endif
                                     @endif
                                 </div>
                             </section>

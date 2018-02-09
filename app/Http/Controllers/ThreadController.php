@@ -100,6 +100,14 @@ class ThreadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $thread = Thread::findOrFail($id);
+
+        $threadName = $thread->title;
+
+        $thread->delete();
+
+        Alert::success("Tu hilo \" $threadName \" se ha borrado satisfactoriamente");
+
+        return redirect()->route('forum.index');
     }
 }
